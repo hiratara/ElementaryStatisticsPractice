@@ -12,3 +12,15 @@ object Excersize1_3 extends App {
     println(harmonicMean(l, m, n))
   }
 }
+
+object Excersize1_4 extends App {
+  val xs:List[Double] = List(
+    78, 59, 54, 62, 60, 62, 60, 50, 66, 69, 63, 62, 65, 53, 52, 67, 70, 67, 
+    56, 60, 56, 66, 55, 70
+  );
+  val (q1, q2, q3) = quartile(xs:_*)
+  println(q1)
+  println(q2)
+  println(q3)
+  println(quartileDeviation(xs:_*))
+}
