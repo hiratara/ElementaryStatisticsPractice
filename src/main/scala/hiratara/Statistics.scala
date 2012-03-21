@@ -8,6 +8,13 @@ object Statistics {
   def harmonicMean(xs: Double*): Double =
     xs.length / (xs map { 1 / _ }).sum
 
+  def variance(xs: Double*): Double = {
+    val mean = arithmaticMean(xs:_*)
+    arithmaticMean((xs map {_ - mean}) map { n => n * n }:_*)
+  }
+
+  def standardDeviation(xs: Double*): Double = Math sqrt variance(xs:_*)
+
   def quartile(xs: Double*):(Double, Double, Double) = {
     val q1Base = xs.length / 4 - 1
     val q2Base = xs.length / 2 - 1

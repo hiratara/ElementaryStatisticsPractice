@@ -24,3 +24,12 @@ object Excersize1_4 extends App {
   println(q3)
   println(quartileDeviation(xs:_*))
 }
+
+object Excersize1_10 extends App {
+  val xs:List[Double] = List(
+    1040, 1070, 1070, 860, 910, 1400, 1050, 890, 1100, 1090
+  );
+  println(arithmaticMean(xs:_*))
+  println(variance(xs:_*))
+  println(standardDeviation(xs:_*))
+}
