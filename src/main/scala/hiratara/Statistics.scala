@@ -32,4 +32,20 @@ object Statistics {
     val (q1, q2, q3) = quartile(xs:_*)
     (q3 - q1) / 2
   }
+
+  def sturgesRule(n: Int): Int = (1.0 + 3.32 * (Math log n)).toInt
+
+  def drawFrequencyDistribution(xs: Double*) {
+    val m: Int = sturgesRule(xs.length)
+    val r: Double = (xs.max - xs.min) / m
+
+    def nextRange(cur: Double, left: List[Double]): Unit = {
+      val low  = left.filter(_ < cur)
+      val high = left.filter(_ >= cur)
+      println("*" * low.length) // from (cur - r) to cur
+      if (xs.max < cur) () else nextRange(cur + r, high)
+    }
+
+    nextRange(xs.min + r, xs.toList)
+  }
 }
