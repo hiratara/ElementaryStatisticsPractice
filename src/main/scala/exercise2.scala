@@ -77,3 +77,25 @@ object Exercise2_11 extends App {
   ).toList
   drawFrequencyDistributionMinAndMax(0.0, 2.0, 1.0, data:_*)
 }
+
+object Exercise2_12 extends App {
+  import scala.util.Random._
+  def throw5(): List[Boolean] = (1 to 5).map(_ => nextBoolean()).toList
+  def score(xs: List[Boolean]) = {
+    def loop(t: Int, f: Int, xs: List[Boolean]): Int = {
+      xs match {
+        case Nil   => 0
+        case x::xs => {
+          val newT = if (x) t + 1 else t
+          val newF = if (x) f else f + 1
+          (if (newT > newF) 1 else 0) + loop(newT, newF, xs)
+        }
+      }
+    }
+
+    loop(0, 0, xs)
+  }
+
+  val data: List[Double] = (1 to 50).map(_ => score(throw5()): Double).toList
+  drawFrequencyDistributionMinAndMax(0.0, 5.0, 1.0, data:_*)
+}
