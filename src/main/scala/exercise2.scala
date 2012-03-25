@@ -67,3 +67,13 @@ object Exercise2_10 extends App {
   )
   drawCumulativeFrequencyDistribution(2, 22, 3, data:_*)
 }
+
+object Exercise2_11 extends App {
+  import scala.util.Random._
+  def rollDice(): Int = nextInt(6) + 1
+
+  val data: List[Double] = (0 to 99).map((_: Int) =>
+    (if (rollDice() == 6) 1.0 else 0.0) + (if (rollDice() == 6) 1.0 else 0.0)
+  ).toList
+  drawFrequencyDistributionMinAndMax(0.0, 2.0, 1.0, data:_*)
+}

@@ -44,15 +44,20 @@ object Statistics {
 
   def drawFrequencyDistribution(m: Int, xs: Double*) {
     val r: Double = (xs.max - xs.min) / m
+    drawFrequencyDistributionMinAndMax(xs.min, xs.max, r, xs:_*)
+  }
 
+  def drawFrequencyDistributionMinAndMax(
+    min: Double, max: Double, r: Double, xs: Double*
+  ) {
     def nextRange(cur: Double, left: List[Double]): Unit = {
       val low  = left.filter(_ < cur)
       val high = left.filter(_ >= cur)
       println("*" * low.length) // from (cur - r) to cur
-      if (xs.max < cur) () else nextRange(cur + r, high)
+      if (max < cur) () else nextRange(cur + r, high)
     }
 
-    nextRange(xs.min + r, xs.toList)
+    nextRange(min + r, xs.toList)
   }
 
   def drawCumulativeFrequencyDistribution(
