@@ -99,3 +99,67 @@ object Exercise2_12 extends App {
   val data: List[Double] = (1 to 50).map(_ => score(throw5()): Double).toList
   drawFrequencyDistributionMinAndMax(0.0, 5.0, 1.0, data:_*)
 }
+
+object Exercise2_13 extends App {
+  val data: List[(Double, Int)] = List(
+    (52.5 -> 3),
+    (57.5 -> 5),
+    (62.5 -> 12),
+    (67.5 -> 15),
+    (72.5 -> 5),
+    (77.5 -> 4)
+  )
+
+  println(meanFromFrequency(data:_*))
+  println(standardDeviationFromFrequency(data:_*))
+}
+
+object Exercise2_14 extends App {
+  val data: List[(Double, Int)] = List(
+    (2.0 -> 4),
+    (7.0 -> 12),
+    (12.0 -> 17),
+    (17.0 -> 6),
+    (22.0 -> 3),
+    (27.0 -> 2),
+    (32.0 -> 0),
+    (37.0 -> 1)
+  )
+
+  println(meanFromFrequency(data:_*))
+  println(varianceFromFrequency(data:_*))
+}
+
+object Exercise2_15 extends App {
+  val data: List[(Double, Int)] = List(
+    (10.0 -> 17),
+    (30.0 -> 45),
+    (50.0 -> 53),
+    (70.0 -> 27),
+    (90.0 -> 8)
+  )
+
+  println(meanFromFrequency(data:_*))
+  println(standardDeviationFromFrequency(data:_*))
+}
+
+object Exercise2_16 extends App {
+  val data: List[(Double, Int)] = List(
+    (60.0 -> 1),
+    (65.0 -> 2),
+    (70.0 -> 4),
+    (75.0 -> 5),
+    (80.0 -> 8),
+    (85.0 -> 11),
+    (90.0 -> 7),
+    (95.0 -> 4),
+    (100.0 -> 8)
+  )
+
+  val mean = meanFromFrequency(data:_*)
+  val sd = standardDeviationFromFrequency(data:_*)
+
+  println(mean)
+  println(sd)
+  println(50 + (100 - mean) * 10 / sd)
+}

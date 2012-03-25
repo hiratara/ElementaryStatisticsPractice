@@ -72,4 +72,20 @@ object Statistics {
 
     nextRange(min + r, xs.toList)
   }
+
+  def meanFromFrequency(xs: (Double, Int)*) = {
+    val total: Double = xs.map((x:(Double, Int)) => x._2).sum
+    xs.map((x:(Double, Int)) => x._1 * x._2).sum / total
+  }
+
+  def varianceFromFrequency(xs: (Double, Int)*) = {
+    val mean = meanFromFrequency(xs:_*)
+    meanFromFrequency(xs.map((x:(Double, Int)) => {
+      val delta = x._1 - mean
+      (delta * delta, x._2)
+    }):_*)
+  }
+
+  def standardDeviationFromFrequency(xs: (Double, Int)*) =
+    scala.math sqrt varianceFromFrequency(xs:_*)
 }
