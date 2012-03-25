@@ -33,7 +33,10 @@ object Statistics {
     (q3 - q1) / 2
   }
 
-  def sturgesRule(n: Int): Int = (1.0 + 3.32 * (Math log n)).toInt
+  def sturgesRule(n: Int): Int = {
+    val result: Long = scala.math round (1.0 + 3.32 * (scala.math log10 n))
+    result.toInt
+  }
 
   def drawFrequencyDistribution(xs: Double*) {
     val m: Int = sturgesRule(xs.length)
