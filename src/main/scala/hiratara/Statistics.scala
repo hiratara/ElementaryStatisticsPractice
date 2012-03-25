@@ -88,4 +88,22 @@ object Statistics {
 
   def standardDeviationFromFrequency(xs: (Double, Int)*) =
     scala.math sqrt varianceFromFrequency(xs:_*)
+
+  def leastSquaresMethod(xys: (Double, Double)*) = {
+    val n = xys.length
+    val sumX = xys.map(_._1).sum
+    val sumY = xys.map(_._2).sum
+    val sumXX = xys.map {xy =>
+      val x = xy._1
+      x * x
+    }.sum
+    val sumYY = xys.map {xy =>
+      val y = xy._2
+      y * y
+    }.sum
+    val sumXY = xys.map {xy => xy._1 * xy._2}.sum
+    val a = (sumXX * sumY - sumX * sumXY) / (n * sumXX - sumX * sumX)
+    val b = (n * sumXY - sumX * sumY) / (n * sumXX - sumX * sumX)
+    (a, b)
+  }
 }
