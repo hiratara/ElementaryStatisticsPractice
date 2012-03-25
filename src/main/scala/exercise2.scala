@@ -45,3 +45,14 @@ object Exercise2_6 extends App {
 
   drawFrequencyDistribution(10, data:_*)
 }
+
+object Exercise2_9 extends App {
+  val data = List[Double](
+    73, 65, 82, 70, 45, 50, 70, 54, 32, 75,
+    75, 67, 65, 60, 75, 87, 83, 40, 72, 64,
+    58, 75, 89, 70, 73, 55, 61, 68, 89, 93,
+    43, 51, 59, 38, 65, 71, 75, 85, 65, 85,
+    49, 97, 55, 60, 76, 75, 69, 35, 45, 63
+  )
+  drawCumulativeFrequencyDistribution(30, 100, 10, data:_*)
+}

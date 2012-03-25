@@ -54,4 +54,17 @@ object Statistics {
 
     nextRange(xs.min + r, xs.toList)
   }
+
+  def drawCumulativeFrequencyDistribution(
+    min: Double, max: Double, r: Double, xs: Double*
+  ) {
+    def nextRange(cur: Double, left: List[Double]): Unit = {
+      val low  = left.filter(_ < cur)
+      val high = left.filter(_ >= cur)
+      println("*" * low.length) // from (cur - r) to cur
+      if (max < cur) () else nextRange(cur + r, left)
+    }
+
+    nextRange(min + r, xs.toList)
+  }
 }
