@@ -39,7 +39,10 @@ object Statistics {
   }
 
   def drawFrequencyDistribution(xs: Double*) {
-    val m: Int = sturgesRule(xs.length)
+    drawFrequencyDistribution(sturgesRule(xs.length), xs:_*)
+  }
+
+  def drawFrequencyDistribution(m: Int, xs: Double*) {
     val r: Double = (xs.max - xs.min) / m
 
     def nextRange(cur: Double, left: List[Double]): Unit = {
