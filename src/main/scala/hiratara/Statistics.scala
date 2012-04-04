@@ -137,4 +137,10 @@ object Statistics {
     def distribution(x: Int) = combi(n, x).toDouble * pow(p, x) * pow(1 - p, n - x)
     distribution _
   }
+
+  def poissonDistribution(m: Double): (Int) => Double = {
+    import scala.math.pow
+    def distribution(x: Int) = pow(m, x).toDouble / pow(2.71828, m).toDouble / factor(x).toDouble
+    distribution _
+  }
 }
