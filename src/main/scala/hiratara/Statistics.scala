@@ -1,4 +1,5 @@
 package hiratara
+import scala.math.BigInt
 
 object Statistics {
   def arithmaticMean(xs: Double*): Double = xs.sum / xs.length
@@ -124,5 +125,16 @@ object Statistics {
     val (a, b) = leastSquaresMethod(xys:_*)
 
     (sumYY - a * sumY - b * sumXY) / n
+  }
+
+  def factor(n: BigInt): BigInt = if (n <= 1) 1 else n * factor(n - 1)
+
+  def combi(n: BigInt, m: BigInt): BigInt =
+    factor(n) / factor(m) / factor(n - m)
+
+  def binomialDistribution(n: Int, p: Double): (Int) => Double = {
+    import scala.math.pow
+    def distribution(x: Int) = combi(n, x).toDouble * pow(p, x) * pow(1 - p, n - x)
+    distribution _
   }
 }
