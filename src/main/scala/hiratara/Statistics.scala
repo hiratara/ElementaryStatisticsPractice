@@ -143,4 +143,13 @@ object Statistics {
     def distribution(x: Int) = pow(m, x).toDouble / pow(2.71828, m).toDouble / factor(x).toDouble
     distribution _
   }
+
+  def hypergeometricDistribution(
+    n: Int, N: BigInt, Np: BigInt
+  ): (Int) => Double = {
+    import scala.math.pow
+    def distribution(x: Int): Double =
+      (combi(Np, x) * combi(N - Np, n - x)).toDouble / combi(N, n).toDouble
+    distribution _
+  }
 }
