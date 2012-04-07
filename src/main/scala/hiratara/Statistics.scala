@@ -145,7 +145,6 @@ object Statistics {
   def hypergeometricDistribution(
     n: Int, N: BigInt, Np: BigInt
   ): (Int) => Double = {
-    import scala.math.pow
     (x: Int) =>
       (combi(Np, x) * combi(N - Np, n - x)).toDouble / combi(N, n).toDouble
   }
