@@ -134,22 +134,19 @@ object Statistics {
 
   def binomialDistribution(n: Int, p: Double): (Int) => Double = {
     import scala.math.pow
-    def distribution(x: Int) = combi(n, x).toDouble * pow(p, x) * pow(1 - p, n - x)
-    distribution _
+    (x: Int) => combi(n, x).toDouble * pow(p, x) * pow(1 - p, n - x)
   }
 
   def poissonDistribution(m: Double): (Int) => Double = {
     import scala.math.pow
-    def distribution(x: Int) = pow(m, x).toDouble / pow(2.71828, m).toDouble / factor(x).toDouble
-    distribution _
+    (x: Int) => pow(m, x).toDouble / pow(2.71828, m).toDouble / factor(x).toDouble
   }
 
   def hypergeometricDistribution(
     n: Int, N: BigInt, Np: BigInt
   ): (Int) => Double = {
     import scala.math.pow
-    def distribution(x: Int): Double =
+    (x: Int) =>
       (combi(Np, x) * combi(N - Np, n - x)).toDouble / combi(N, n).toDouble
-    distribution _
   }
 }
