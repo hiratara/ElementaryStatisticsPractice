@@ -148,4 +148,14 @@ object Statistics {
     (x: Int) =>
       (combi(Np, x) * combi(N - Np, n - x)).toDouble / combi(N, n).toDouble
   }
+
+  def gaussianDistribution(μ: Double, σ2: Double): (Double) => Double = {
+    import scala.math._
+    def square(x: Double) = x * x
+
+    (x: Double) => {
+      val multiplier = - square(x - μ) / 2 / σ2
+      exp(multiplier) / sqrt(2 * Pi * σ2)
+    }
+  }
 }
